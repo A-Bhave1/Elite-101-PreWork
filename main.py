@@ -1,9 +1,11 @@
+commands = ["Placeholder 1", "Placeholder 2", "Placeholder 3"]
+
 def menuDisplay():
   print("Please choose from the following options: ")
-  print("1) Placeholder Question 1")
-  print("2) Placeholder Question 2")
-  print("3) Placeholder Question 3")
-  print("4) Exit Program")
+  for i in range(0,len(commands)):
+    print(f"{i+1}) {commands[i]}")
+  
+  print(f"{len(commands)+1}) Exit Program")
   option = input("Enter the number of your choice: ")
   return option
 
@@ -28,18 +30,26 @@ print()
 ifInLoop = True
 while(ifInLoop):
   option = menuDisplay()
-  if(option == "1"):
-    print("\nOption 1 reached\n")
-  elif(option == "2"):
-    print("\nOption 2 reached\n")
-  elif(option == "3"):
-    print("\nOption 3 reached\n")
-  elif(option == "4"):
-    print()
-    print(f"Thank you for using our service, {name}!")
-    print("Goodbye!")
-    ifInLoop = False
-  else:
-    print("\nPlease enter a number from 1 to 4.\n")
-    continue
-
+  count = 0
+  notChosenOption = True
+  
+  for i in range(0, len(commands)):
+    if option.isnumeric(): # if option is number
+      if int(option) > 0:
+        if int(option)-1 == i: # if option is a number in commands
+          print(f"\n{commands[i]} reached!\n")
+          notChosenOption = False
+        if int(option)-1 == len(commands): #if option is the length of array +1 (which is end sequence) break from loop
+          print("\nThank you for shopping with us!")
+          notChosenOption = False
+          ifInLoop = False
+          break
+      
+      count += 1 #counting if option is over/under possible commands
+    else: # reached if value is nonnumeric
+      print("\nInvalid input. Please enter a possible command.\n")
+      notChosenOption = False
+      break
+  
+  if count == len(commands) and notChosenOption: # if value is above/below possible values
+    print("\nInvalid input. Please enter a possible command.\n")  
