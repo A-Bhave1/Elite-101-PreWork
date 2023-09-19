@@ -1,4 +1,4 @@
-commands = ["Placeholder 1", "Placeholder 2", "Placeholder 3"]
+commands = ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4", "Placeholder 5"]
 
 def menuDisplay():
   print("Please choose from the following options: ")
@@ -8,6 +8,8 @@ def menuDisplay():
   print(f"{len(commands)+1}) Exit Program")
   option = input("Enter the number of your choice: ")
   return option
+  
+#----------------------------------------------------------
 
 print("Welcome to the Elite 101 Chatbot!")
 name = input("Please enter your name >>> ")
